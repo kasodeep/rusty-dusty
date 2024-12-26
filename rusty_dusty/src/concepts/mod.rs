@@ -1,8 +1,10 @@
 pub mod array;
 pub mod control_flow;
 pub mod data_types;
+pub mod enums;
 pub mod errors;
 pub mod option;
 pub mod strings;
+pub mod structs;
 pub mod tuples;
 pub mod variables;

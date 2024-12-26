@@ -1,4 +1,5 @@
 pub fn main() {
+    println!("Option<Some, None>");
     option();
 
     println!("\nChecking if numbers are even:");
@@ -11,6 +12,7 @@ pub fn main() {
             None => println!("Unable to determine for {num}"),
         }
     }
+    println!()
 }
 
 fn option() {

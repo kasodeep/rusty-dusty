@@ -14,4 +14,7 @@ fn main() {
 
     concepts::errors::main();
     concepts::option::main();
+
+    concepts::structs::main();
+    concepts::enums::main();
 }
