@@ -1,19 +1,26 @@
-## Rusty-Dusty
+# Rusty-Dusty
 
-### Rust
-    The language is fast and memory efficient, featuring a robust system and ownership model.
-    Rust's strict compile time checks enforce correct code, minimizing bugs and boosting software reliability.
-    Rust empowers developers to write safe and concurrent codes.
+## Rust Overview
 
-### Benefits Of Rust
-    Parallel Programming, Ease of Deployment, Real Time Systems.
+- Rust is a systems programming language designed for performance and safety. 
+- It offers features that make it particularly well-suited for applications requiring concurrency, low-level control, and memory safety.
 
-### Installation
-    Installed it on the wsl system in Windows.
-    Downloaded different vscode extensions as helpers.
+### Key Features
 
-### Terminal Commands
-```shell
+- **Speed and Efficiency**: Rust provides a fast and memory-efficient language with zero-cost abstractions.
+- **Ownership Model**: Rust's ownership model ensures memory safety and prevents data races.
+- **Reliability**: Compile-time checks catch bugs early, resulting in highly reliable software.
+- **Concurrency**: Built-in support for concurrent programming.
+
+### Benefits
+
+- **Parallel Programming**: Simplifies building parallel applications.
+- **Ease of Deployment**: Produces executables with minimal runtime dependencies.
+- **Real-Time Systems**: Ideal for real-time and embedded systems due to its performance.
+
+---
+
+```bash
 # To check the version.
 rustc --version
 
@@ -27,42 +34,94 @@ cargo build
 cargo run
 ```
 
-### Variables
+---
 
-1. By default, variables in Rust are immutable.
-2. We need to use the `mut` keyword for making the varibale mutable.
-3. `let` keyword is used to declare the variables in Rust.
+## Variables
 
-### Datatypes
+- Rust emphasizes `immutability` by default, ensuring data `safety` and `predictability`.
+- However, variables can be made `mutable` for cases requiring value reassignment.
+- The `let` keyword is used to declare variables, while additional keywords like `mut` modify their behavior.
+- We can declare a variable to `change` it's data-type or value, called `shadowing`.
 
-1. Data types define the nature of data that variables can store.
-2. Ensures that the operations performed are safe and efficient.
-3. Specifying data types lets Rust optimize memory and CPU usage.
+### Key Characteristics
 
-#### Scalar Types
+1. **Immutable by Default**: Encourages functional programming principles.
+2. **Explicit Mutability**: Requires deliberate use of `mut` for mutable variables.
+3. **Static Typing**: Rust ensures type safety at compile time, minimizing runtime errors.
 
-* Integer: Represents the whole numbers.
-* Floating-Point: Represents the numbers with fractional parts.
-* Boolean: Represents true or false values.
-* Character: Represents a single unicode scalar value.
+---
 
-#### Compound Types
+## Data Types
 
-* Arrays: A fixed size collection of elements of same types.
-* Tuples: A fixed size ordered and immutable collection of elements of different types.
+- Rust provides a robust type system to ensure safety and performance.
+- Data types in Rust can be categorized as scalar or compound.
 
-#### Slices
-    Slices are references to a continous sequences of elements in a collection and do not have ownersip.   
+### Scalar Types
 
-#### Strings
-    Rust has two main string types: String and &str.    
-    An owned, growable, and mutable string type. 
-    It resides in the heap, meaning it owns the memory it occupies and is responsible for deallocating it.
+- **Integer**: Represents whole numbers with varying sizes and signs (e.g., signed and unsigned).
+- **Floating-Point**: Represents numbers with fractional parts and adheres to IEEE-754 standards.
+- **Boolean**: Denotes logical values, `true` or `false`.
+- **Character**: Represents Unicode scalar values, supporting a wide range of symbols and characters.
 
-#### Functions
+### Compound Types
 
-```rust
-fn name(param: Type) -> ReturnType {
-    // Function Body
-}
-```
+- **Arrays**: Fixed-size collections of elements of the same type, providing `contiguous` memory storage.
+- **Tuples**: Fixed-size `ordered` collections that can contain `multiple` data types, ideal for grouping related values.
+
+### Slices
+
+- Slices allow efficient `referencing` of subsets of data within collections.
+- They are particularly useful for working with arrays without `copying` data, promoting memory `efficiency`.
+
+### Strings
+
+Rust offers two primary string types:
+
+1. **String**: An owned, `growable` string stored on the heap, allowing `dynamic` modification.
+2. **&str**: A borrowed, `immutable` string slice, typically used for efficient, `read-only` operations.
+
+---
+
+## Functions
+
+- Functions in Rust are the building blocks of code, enabling modular and reusable design.
+- Defined using the `fn` keyword, functions enforce strict type annotations for parameters and return values, ensuring clarity and correctness.
+
+### Characteristics
+
+1. **Type Safety**: Every parameter and return value must have an explicitly defined type.
+2. **Reusable Logic**: Functions promote modular design and reduce code duplication.
+3. **Pure Functions**: Rust encourages writing functions without side effects, enhancing predictability.
+
+---
+
+## Error Handling
+
+    Rust provides robust mechanisms for error handling, avoiding traditional exceptions in favor of explicit types like `Result` and `Option`.
+
+### Recoverable Errors
+
+    These are errors that can be addressed by the program, allowing it to continue execution. Rust uses the `Result` type to encapsulate outcomes that can either succeed or fail.
+
+### Unrecoverable Errors
+
+These errors signify critical issues that prevent the program from continuing. Rust handles such scenarios using the `panic!` macro, which immediately terminates the program.
+
+### Error Propagation
+
+Error propagation allows errors to be passed up the call stack to be handled at higher levels. Techniques include:
+
+1. **The `?` Operator**: Simplifies propagating errors in functions.
+2. **Custom Error Types**: Enables detailed and domain-specific error reporting.
+
+---
+
+## Option Enum
+
+    The `Option` type is used to represent optional values. It explicitly handles cases where data may be absent, ensuring safe and predictable behavior.
+
+- **Explicit Null Safety**: Eliminates the risk of null pointer exceptions.
+- **Variants**: Represents values as either `Some(value)` or `None`.
+- **Seamless Integration**: Works with other Rust features like pattern matching for elegant handling of optional data.
+
+---

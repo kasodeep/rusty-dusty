@@ -3,26 +3,15 @@ mod concepts;
 fn main() {
     println!("Hello, World!");
 
-    let x = 5;
-    let mut y = 10;
+    concepts::variables::main();
+    concepts::data_types::main();
 
-    println!("x = {}, y = {}", x, y);
-    y += 1;
-    println!("y = {}\n", y);
+    concepts::array::main();
+    concepts::tuples::main();
+    
+    concepts::strings::main();
+    concepts::control_flow::main();
 
-    // Data-Types.
-    concepts::data_types::data_types();
-    // Slices.
-    concepts::slices::slices();
-    // Strings.
-    concepts::strings::strings();
-
-    // Functions.
-    let sum = concepts::function::add(10, 20);
-    println!("Function Returned: {sum}\n");
-
-    // Tuples.
-    concepts::tuples::tuples();
-    // Loops.
-    concepts::loops::loops();
+    concepts::errors::main();
+    concepts::option::main();
 }

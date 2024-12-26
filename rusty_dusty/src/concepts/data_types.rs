@@ -1,4 +1,4 @@
-pub fn data_types(){
+pub fn main(){
     println!("Data-Types");
     
     let arr = [1, 2, 3, 4, 5];
