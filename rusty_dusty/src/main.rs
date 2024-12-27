@@ -27,4 +27,8 @@ fn main() {
     collections::hashmap::demo();
     collections::btreemap::demo();
     collections::hashset::demo();
+
+    concepts::generics::demo();
+    concepts::traits::demo();
+    concepts::lifetimes::demo();
 }

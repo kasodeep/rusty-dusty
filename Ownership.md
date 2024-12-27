@@ -9,12 +9,20 @@
 - There can only be one owner at a time.
 - When the owner goes out of scope, the value will be dropped.
 
+## Transfer of Ownership
+
+- Assigning value to another variable.
+- Passing value to a function.
+- Returning value from a function.
+
 ## String type
 
 - The memory must be requested from the memory allocator at runtime.
 - We need a way of returning this memory to the allocator when we’re done with our String.
 
 ## References and Borrowing
+
+Borrowing gives temporary access to a resource without transferring ownership.
 
 A data race is similar to a race condition and happens when these three behaviors occur:
 
