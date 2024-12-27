@@ -1,3 +1,6 @@
+use concepts::own::demo;
+
+mod collections;
 mod concepts;
 
 fn main() {
@@ -17,4 +20,11 @@ fn main() {
 
     concepts::structs::main();
     concepts::enums::main();
+
+    // advanced concepts.
+    demo();
+    collections::vector::demo();
+    collections::hashmap::demo();
+    collections::btreemap::demo();
+    collections::hashset::demo();
 }
