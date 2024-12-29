@@ -47,6 +47,9 @@ cargo test -- --nocapture
 
 # Run ignored tests
 cargo test -- --ignored
+
+# Run with release profile.
+cargo build --release
 ```
 
 ---

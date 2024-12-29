@@ -2,6 +2,7 @@ use concepts::own::demo;
 
 mod collections;
 mod concepts;
+mod advanced;
 
 fn main() {
     println!("Hello, World!");
@@ -31,4 +32,6 @@ fn main() {
     concepts::generics::demo();
     concepts::traits::demo();
     concepts::lifetimes::demo();
+
+    advanced::iter_closure::demo();
 }
