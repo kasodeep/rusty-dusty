@@ -32,6 +32,21 @@ cargo build
 
 # To run the project. (Single Step)
 cargo run
+
+# To create library crate.
+cargo new name --lib
+
+# Run all tests
+cargo test
+
+# Run specific test file
+cargo test --test integration_test
+
+# Run tests with output
+cargo test -- --nocapture
+
+# Run ignored tests
+cargo test -- --ignored
 ```
 
 ---

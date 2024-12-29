@@ -40,3 +40,7 @@ fn calculate_length_reference(s: &str) -> usize {
 fn change(s: &mut String) {
     s.push_str("deep");
 }
+
+fn _owner_so_change(mut s: String){
+    s.push_str("deep");
+}
