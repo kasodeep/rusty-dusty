@@ -34,4 +34,5 @@ fn main() {
     concepts::lifetimes::demo();
 
     advanced::iter_closure::demo();
+    advanced::concurrency::demo();
 }
