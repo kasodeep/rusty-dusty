@@ -69,6 +69,7 @@ struct CountDown {
     count: u32,
 }
 
+// implementation for advanced trait.
 impl Iterator for CountDown {
     type Item = u32;
     
@@ -79,6 +80,19 @@ impl Iterator for CountDown {
             self.count -= 1;
             Some(self.count)
         }
+    }
+}
+
+trait Add<RHS = Self>{
+    type Output;
+    fn add(self, rhs: RHS) -> Self::Output;
+}
+
+impl Add for i32 {
+    type Output = i32;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        self + rhs
     }
 }
 

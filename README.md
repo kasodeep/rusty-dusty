@@ -143,3 +143,12 @@ Error propagation allows errors to be passed up the call stack to be handled at 
 - **Seamless Integration**: Works with other Rust features like pattern matching for elegant handling of optional data.
 
 ---
+
+## Profiling Tools
+
+- Perf: Generate flamegraphs to collect and analyze performance.
+```bash
+perf record -g ./name
+perf script | ./flamegraph.p1 > flamegraph.svg
+```
+- cargo-profiler: Simplifies by automating the setup and execution of performance tests.
