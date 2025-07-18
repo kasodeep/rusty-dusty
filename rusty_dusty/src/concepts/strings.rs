@@ -1,3 +1,17 @@
+/// Demonstrates usage of string literals (`&str`) and heap-allocated `String` in Rust.
+///
+/// Covers:
+/// - Creation and usage of string literals and raw strings
+/// - String slicing and trimming
+/// - Creating and modifying owned `String` types
+/// - Concatenation and formatting
+/// - Common string methods (length, contains, replace, etc.)
+/// - String splitting and parsing
+/// - Conversion between `String` and `&str`
+/// - Character and byte iteration
+/// - Line splitting and char transformation
+/// - Capacity management
+/// - Pattern matching with indices
 pub fn main() {
     println!("String and Literals &str:");
 

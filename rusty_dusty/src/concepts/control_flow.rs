@@ -1,5 +1,11 @@
 use std::time::{Duration, Instant};
 
+/// Demonstrates control flow concepts in Rust including:
+///
+/// - `for`, `while`, and `loop` constructs with `break`, `enumerate`, and value returns
+/// - Conditional branching using `if`, `else if`, and `else`
+/// - Pattern matching using `match`, including guards, ranges, tuples, and `Option`
+/// - Time-based loop to measure how many iterations happen per second
 pub fn main() {
     loops_demo();
     if_else_demo();

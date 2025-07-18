@@ -1,5 +1,15 @@
 use std::{f32::consts::PI as PI32, f64::consts::PI as PI64};
 
+/// Demonstrates usage of tuples in Rust.
+///
+/// This function covers:
+/// - Tuple creation with inferred and explicit types
+/// - Unit and nested tuples
+/// - Accessing tuple elements using indexing and destructuring
+/// - Mutability and modification of tuples
+/// - Copying and cloning tuples
+/// - Using tuples as return values and function parameters
+/// - Simple tuple processing
 pub fn main() {
     println!("Tuples");
     

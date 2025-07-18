@@ -112,6 +112,8 @@ Rust offers two primary string types:
 
 - Functions in Rust are the building blocks of code, enabling modular and reusable design.
 - Defined using the `fn` keyword, functions enforce strict type annotations for parameters and return values, ensuring clarity and correctness.
+- Functions that don't return any value return unit tuple ().
+- The ! symbol means the function doesn't return anything.
 
 ### Characteristics
 

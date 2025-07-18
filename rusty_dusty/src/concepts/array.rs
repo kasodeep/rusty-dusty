@@ -1,3 +1,16 @@
+/// Demonstrates a comprehensive set of operations on arrays in Rust.
+///
+/// This function covers:
+/// - Array creation (inferred and explicit types)
+/// - Initialization with default values
+/// - Accessing properties and elements
+/// - Iteration and mutation
+/// - Sorting and reversing
+/// - Slicing and splitting
+/// - Chunking and sliding windows
+/// - Conversion to vector and higher-order functions (map, filter, fold)
+/// - Multidimensional arrays
+/// - Array comparison
 pub fn main() {
     println!("Arrays");
 

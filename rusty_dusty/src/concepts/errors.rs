@@ -1,11 +1,16 @@
-use std::{fmt, fs::File, io::{self, ErrorKind, Read}};
+use std::{
+    fmt,
+    fs::File,
+    io::{self, ErrorKind, Read},
+};
 
+/// Demonstrates various error handling mechanisms including recoverable and custom errors.
 pub fn main() {
     recoverable();
-    
+
     match read_file_contents("files/text.txt") {
         Ok(contents) => println!("File contents: {contents}"),
-        Err(err) => println!("Error: {err}")
+        Err(err) => println!("Error: {err}"),
     }
 
     let result = divide(10, 2);
@@ -20,6 +25,9 @@ pub fn main() {
     }
 }
 
+/// Demonstrates handling a recoverable error when trying to open a file.
+/// If the file doesn't exist, it attempts to create it.
+/// Panics if an unexpected error occurs during opening or creating the file.
 fn recoverable() {
     println!("Recoverable Error!");
 
@@ -41,6 +49,17 @@ fn recoverable() {
     println!();
 }
 
+/// Attempts to divide two integers, returning a `Result`.
+///
+/// # Arguments
+///
+/// * `a` - Dividend.
+/// * `b` - Divisor.
+///
+/// # Returns
+///
+/// * `Ok(i32)` if division is successful.
+/// * `Err(&'static str)` if `b` is zero.
 fn divide(a: i32, b: i32) -> Result<i32, &'static str> {
     if b == 0 {
         Err("Cannot divide by zero")
@@ -49,7 +68,17 @@ fn divide(a: i32, b: i32) -> Result<i32, &'static str> {
     }
 }
 
-fn read_file_contents(filename: &str) -> Result<String, io::Error>{
+/// Reads the entire contents of a file into a `String`.
+///
+/// # Arguments
+///
+/// * `filename` - Path to the file.
+///
+/// # Returns
+///
+/// * `Ok(String)` containing the file contents.
+/// * `Err(io::Error)` if reading fails.
+fn read_file_contents(filename: &str) -> Result<String, io::Error> {
     let mut file = File::open(filename)?;
 
     let mut contents = String::new();
@@ -58,15 +87,13 @@ fn read_file_contents(filename: &str) -> Result<String, io::Error>{
     Ok(contents)
 }
 
-// custom error handler.
+/// Custom error type that can wrap `io::Error` and `ParseIntError`.
 #[derive(Debug)]
 enum MyError {
     Io(io::Error),
     Parse(std::num::ParseIntError),
 }
 
-
-// Implement `From` trait to convert `io::Error` and `ParseIntError` into `MyError`
 impl From<io::Error> for MyError {
     fn from(error: io::Error) -> Self {
         MyError::Io(error)
@@ -79,7 +106,6 @@ impl From<std::num::ParseIntError> for MyError {
     }
 }
 
-// Implement `Display` for `MyError`
 impl fmt::Display for MyError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
@@ -89,6 +115,16 @@ impl fmt::Display for MyError {
     }
 }
 
+/// Reads a number from a file, parsing it as an `i32`.
+///
+/// # Arguments
+///
+/// * `path` - Path to the file.
+///
+/// # Returns
+///
+/// * `Ok(i32)` if the file is successfully read and parsed.
+/// * `Err(MyError)` on IO or parsing error.
 fn read_and_parse_file(path: &str) -> Result<i32, MyError> {
     let mut file = File::open(path)?;
 
