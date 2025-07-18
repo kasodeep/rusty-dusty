@@ -1,7 +1,10 @@
+use std::time::{Duration, Instant};
+
 pub fn main() {
     loops_demo();
     if_else_demo();
-    match_demo();    
+    match_demo();
+    increment_per_second();
 }
 
 fn loops_demo() {
@@ -34,7 +37,7 @@ fn loops_demo() {
 
     // while loop examples
     println!("\n2. While Loops:");
-    
+
     let mut counter = 1;
     '_outer: while counter <= 5 {
         print!("{counter} ");
@@ -44,14 +47,16 @@ fn loops_demo() {
 
     // loop (Infinite Loop) examples.
     println!("\n3. Loop Examples:");
-    
+
     // basic loop with break.
     print!("Basic loop with break: ");
     let mut count = 0;
     loop {
         print!("{count} ");
         count += 1;
-        if count == 5 { break; }
+        if count == 5 {
+            break;
+        }
     }
     println!();
 
@@ -65,12 +70,12 @@ fn loops_demo() {
     println!("Loop with return value: {result}\n");
 }
 
-pub fn if_else_demo() {
+fn if_else_demo() {
     println!("If/Else");
-    
+
     let age = 25;
     let has_license = true;
-    
+
     if age >= 18 && has_license {
         println!("Can drive");
     } else if age >= 18 {
@@ -79,8 +84,8 @@ pub fn if_else_demo() {
         println!("Too young to drive");
     }
 
-    let config_max = Some(3u8);
-    if let Some(max) = config_max {
+    let arr = [1, 2, 4];
+    if let Some(max) = arr.get(2) {
         println!("Maximum is configured to be {max}");
     }
 
@@ -89,16 +94,16 @@ pub fn if_else_demo() {
     println!("Value from if expression: {value}\n");
 }
 
-pub fn match_demo() {
+fn match_demo() {
     println!("Expression");
-    
+
     let number = 13;
     match number {
         1 => println!("One"),
         2 | 3 | 5 | 7 | 11 | 13 => println!("This is a prime number"),
         _ => println!("Something else"),
     }
-    
+
     let grade = 85;
     match grade {
         90..=100 => println!("A"),
@@ -107,7 +112,7 @@ pub fn match_demo() {
         60..=69 => println!("D"),
         _ => println!("F"),
     }
-    
+
     let pair = (2, -2);
     match pair {
         (x, y) if x == y => println!("Equal"),
@@ -115,7 +120,7 @@ pub fn match_demo() {
         (x, _) if x % 2 == 0 => println!("First is even"),
         _ => println!("No match"),
     }
-    
+
     let msg = Some(String::from("Hello"));
     match msg {
         Some(text) if text.len() > 5 => println!("Long message: {text}"),
@@ -123,4 +128,15 @@ pub fn match_demo() {
         None => println!("No message"),
     }
     println!();
+}
+
+fn increment_per_second() {
+    let mut count = 0;
+    let time_limit = Duration::new(1, 0);
+    let start = Instant::now();
+    
+    while (Instant::now() - start) < time_limit {
+        count += 1;
+    }
+    println!("Counting speed per second: {count}");
 }

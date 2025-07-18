@@ -17,11 +17,14 @@ pub fn main() {
     println!("\nArray Properties:");
     println!("Length of array: {}", numbers.len());    
     println!("Size of array in bytes: {}", std::mem::size_of_val(&numbers));
+    println!("Is array empty? {}", numbers.is_empty());
 
     // accessing elements.
     println!("\nAccessing Elements:");
     println!("First element: {}", numbers[0]);
     println!("Last element: {}", numbers[numbers.len() - 1]);
+    println!("Safe access (get 2): {:?}", numbers.get(2)); // Safe indexing
+    println!("Safe access (out of bounds): {:?}", numbers.get(10));
 
     // array methods and operations.
     println!("\nArray Methods and Operations:");
@@ -40,9 +43,34 @@ pub fn main() {
     mutable_array[2] = 10;
     println!("Modified array: {:?}", mutable_array);
 
+    // sort array.
+    let mut sortable_array = [5, 2, 8, 1, 9];
+    sortable_array.sort();
+    println!("Sorted array: {:?}", sortable_array);
+
+    // reverse array.
+    sortable_array.reverse();
+    println!("Reversed array: {:?}", sortable_array);
+
     // slice operations.
     let slice = &numbers[1..4];
     println!("Slice of array [1..4]: {:?}", slice);
+
+    // split_at.
+    let (left, right) = numbers.split_at(3);
+    println!("Split at 3: Left: {:?}, Right: {:?}", left, right);
+
+    // chunks.
+    println!("Chunks of size 2:");
+    for chunk in numbers.chunks(2) {
+        println!("  {:?}", chunk);
+    }
+
+    // windows.
+    println!("Windows of size 2:");
+    for window in numbers.windows(2) {
+        println!("  {:?}", window);
+    }
 
     // advanced operations.
     println!("\nAdvanced Operations:");
@@ -56,8 +84,20 @@ pub fn main() {
     println!("Array contains 2: {}", contains_2);
 
     // find first element matching condition.
-    let first_even = numbers.iter().find(|&&x| x % 2 == 0);
+    let first_even = numbers.iter().find(|&x| x % 2 == 0);
     println!("First even number: {:?}", first_even);
+
+    // map: double each element.
+    let doubled: Vec<i32> = numbers.iter().map(|&x| x * 2).collect();
+    println!("Doubled elements: {:?}", doubled);
+
+    // filter: keep even numbers.
+    let evens: Vec<i32> = numbers.iter().filter(|&&x| x % 2 == 0).copied().collect();
+    println!("Even numbers: {:?}", evens);
+
+    // fold: sum all elements.
+    let sum = numbers.iter().fold(0, |acc, &x| acc + x);
+    println!("Sum of elements: {}", sum);
 
     // multi-dimensional arrays
     println!("\nMulti-dimensional Arrays:");
@@ -67,7 +107,6 @@ pub fn main() {
         [7, 8, 9]
     ];
     println!("2D array (matrix): {:?}", matrix);
-    println!("Access matrix element [1][1]: {}", matrix[1][1]);
 
     // array comparison
     println!("\nArray Comparison:");
@@ -76,5 +115,5 @@ pub fn main() {
     let array3 = [1, 2, 4];
     
     println!("array1 == array2: {}", array1 == array2);
-    println!("array1 == array3: {}\n", array1 == array3);
+    println!("array1 == array3: {}", array1 == array3);
 }

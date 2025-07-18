@@ -8,7 +8,7 @@ pub fn main(){
     let is_alive = true;
 
     println!("float = {}, bool = {}", float_val, is_alive);
-    println!("arr = {:?}, tuple = {:?}", arr, tup);
-
+    println!("arr = {:#?}, tuple = {:?}", arr, tup);
+    
     println!();
 }

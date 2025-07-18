@@ -1,38 +1,43 @@
-use concepts::own::demo;
+use std::env;
+
+use concepts::own::demo as own_demo;
 
 mod collections;
 mod concepts;
 mod advanced;
 
 fn main() {
-    println!("Hello, World!");
+    let args: Vec<String> = env::args().skip(1).collect(); // Skip program name.
 
-    concepts::variables::main();
-    concepts::data_types::main();
+    if args.is_empty() {
+        println!("Usage: cargo run -- <demo_name> [<demo_name> ...]");
+        println!("Example: cargo run -- variables data_types vector");
+        return;
+    }
 
-    concepts::array::main();
-    concepts::tuples::main();
-    
-    concepts::strings::main();
-    concepts::control_flow::main();
-
-    concepts::errors::main();
-    concepts::option::main();
-
-    concepts::structs::main();
-    concepts::enums::main();
-
-    // advanced concepts.
-    demo();
-    collections::vector::demo();
-    collections::hashmap::demo();
-    collections::btreemap::demo();
-    collections::hashset::demo();
-
-    concepts::generics::demo();
-    concepts::traits::demo();
-    concepts::lifetimes::demo();
-
-    advanced::iter_closure::demo();
-    advanced::concurrency::demo();
+    for arg in &args {
+        match arg.as_str() {
+            "variables" => concepts::variables::main(),
+            "data_types" => concepts::data_types::main(),
+            "array" => concepts::array::main(),
+            "tuples" => concepts::tuples::main(),
+            "strings" => concepts::strings::main(),
+            "control_flow" => concepts::control_flow::main(),
+            "errors" => concepts::errors::main(),
+            "option" => concepts::option::main(),
+            "structs" => concepts::structs::main(),
+            "enums" => concepts::enums::main(),
+            "own" => own_demo(),
+            "vector" => collections::vector::demo(),
+            "hashmap" => collections::hashmap::demo(),
+            "btreemap" => collections::btreemap::demo(),
+            "hashset" => collections::hashset::demo(),
+            "generics" => concepts::generics::demo(),
+            "traits" => concepts::traits::demo(),
+            "lifetimes" => concepts::lifetimes::demo(),
+            "iter_closure" => advanced::iter_closure::demo(),
+            "concurrency" => advanced::concurrency::demo(),
+            _ => println!("Unknown demo: {}", arg),
+        }
+    }
 }

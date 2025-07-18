@@ -30,6 +30,9 @@ cargo new rust_first
 # To compile the project.
 cargo build
 
+# To compile a single file.
+rustc file.rs
+
 # To run the project. (Single Step)
 cargo run
 
@@ -50,8 +53,13 @@ cargo test -- --ignored
 
 # Run with release profile.
 cargo build --release
-```
 
+# To add a new crate (dependency)
+cargo add <package-name>
+
+# To create the documentation
+cargo doc
+```
 ---
 
 ## Variables
