@@ -2,7 +2,7 @@
 use std::env; // For accessing command-line arguments
 
 // Bring a specific function into scope with an alias
-use concepts::own::demo as own_demo;
+use concepts::own::main as own_demo;
 
 // Declare internal modules that contain various concepts and demos
 mod collections;
@@ -47,7 +47,7 @@ fn main() {
 
             // Intermediate concepts
             "generics" => concepts::generics::demo(),
-            "traits" => concepts::traits::demo(),
+            "traits" => concepts::traits::trait_demo(),
             "lifetimes" => concepts::lifetimes::demo(),
 
             // Advanced topics

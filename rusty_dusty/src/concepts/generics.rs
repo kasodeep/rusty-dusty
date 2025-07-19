@@ -1,89 +1,106 @@
-use std::fmt::Display;
+use std::fmt::{Debug, Display};
 
-/// Finds the largest element in a slice of comparable items.
-/// 
+/// Returns the largest element in a list of comparable items.
+///
+/// # Type Parameters
+///
+/// * `T` - Must implement `PartialOrd + Copy`
+///
 /// # Arguments
-/// 
-/// * `list` - A slice of elements that implement `PartialOrd`
-/// 
+///
+/// * `items` - A slice of items
+///
 /// # Returns
-/// 
-/// A reference to the largest element in the slice
-/// 
+///
+/// The largest item in the slice
+///
 /// # Panics
-/// 
+///
 /// Panics if the slice is empty
-/// 
+///
 /// # Example
-/// 
+///
 /// ```
-/// let numbers = vec![34, 50, 25, 100, 65];
-/// let largest_num = largest(&numbers);
-/// assert_eq!(*largest_num, 100);
+/// let numbers = vec![10, 40, 30];
+/// assert_eq!(largest(&numbers), 40);
 /// ```
-fn largest<T: PartialOrd>(list: &[T]) -> &T {
-    let mut largest = &list[0];
+fn largest<T: PartialOrd + Copy>(items: &[T]) -> T {
+    let mut max = items[0];
 
-    for item in list {
-        if item > largest {
-            largest = item;
+    for &item in items.iter() {
+        if item > max {
+            max = item;
         }
     }
 
-    largest
+    max
 }
 
-/// A generic point in 2D space with coordinates of potentially different types.
-/// 
+/// A 2D point that can hold different types for x and y.
+///
 /// # Type Parameters
-/// 
-/// * `T` - The type of the x coordinate
-/// * `U` - The type of the y coordinate, must implement `Display`
-/// 
-/// # Examples
-/// 
+///
+/// * `X` - Type of x coordinate
+/// * `Y` - Type of y coordinate (must implement `Display`)
+///
+/// # Example
+///
 /// ```
-/// let point = Point { x: 5, y: 4.0 };
-/// assert_eq!(*point.x(), 5);
+/// let p = Point { x: 1, y: 3.5 };
+/// println!("{}", p.describe());
 /// ```
-struct Point<T, U: Display> {
-    /// The x coordinate
-    x: T,
-    /// The y coordinate
-    y: U,
+#[derive(Debug)]
+struct Point<X: Debug, Y: Display> {
+    x: X,
+    y: Y,
 }
 
-impl<T, U: Display> Point<T, U> {
-    /// Returns a reference to the x coordinate.
-    /// 
-    /// This method also prints the y coordinate to demonstrate the Display constraint.
-    /// 
-    /// # Returns
-    /// 
-    /// A reference to the x coordinate
-    fn x(&self) -> &T {
-        println!("Point y: {}", self.y);
-        &self.x
+impl<X: Debug, Y: Display> Point<X, Y> {
+    /// Describes the point by printing x and y.
+    fn describe(&self) -> String {
+        format!("Point at x = {:?}, y = {}", self.x, self.y)
     }
 }
 
-/// Demonstrates the usage of generic types with the `largest` function and `Point` struct.
-/// 
-/// This function shows how the same generic function can work with different types,
-/// and demonstrates the usage of generic structs with different type parameters.
+/// A generic wrapper that can hold any value and display it.
+///
+/// # Type Parameters
+/// * `T` - Must implement `Display`
+struct Wrapper<T: Display> {
+    value: T,
+}
+
+impl<T: Display> Wrapper<T> {
+    fn show(&self) {
+        println!("Wrapped value: {}", self.value);
+    }
+}
+
+/// Demonstrates generic functions, structs, trait bounds, and more.
+///
+/// This function:
+/// - Finds largest items in lists
+/// - Uses generic `Point` with different coordinate types
+/// - Wraps a `String` in a generic `Wrapper`
 pub fn demo() {
-    println!("Generics");
+    println!("=== Generics Demo ===");
 
-    let number_list = vec![34, 50, 25, 100, 65];
+    // Generic function usage
+    let nums = vec![1, 5, 3, 9, 2];
+    let max_num = largest(&nums);
+    println!("Largest number: {}", max_num);
 
-    let result = largest(&number_list);
-    println!("The largest number is {result}");
+    let chars = vec!['g', 'z', 'a', 'b'];
+    let max_char = largest(&chars);
+    println!("Largest char: {}", max_char);
 
-    let char_list = vec!['y', 'm', 'a', 'q'];
+    // Generic struct usage
+    let point = Point { x: 10, y: 3.14 };
+    println!("{}", point.describe());
 
-    let result = largest(&char_list);
-    println!("The largest char is {result}");
-
-    let _integer_and_float = Point { x: 5, y: 4.0 };
-    println!("Point x: {}\n", _integer_and_float.x());
+    // Wrapper example
+    let wrapped = Wrapper {
+        value: String::from("Rust"),
+    };
+    wrapped.show();
 }
