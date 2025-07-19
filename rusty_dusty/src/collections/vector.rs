@@ -15,7 +15,7 @@ fn vector_initialization_examples() {
     let _filled_vec = vec![0; 10];
 
     let tuple_vector = vec![(1, 2), (3, 4), (5, 6)];
-    println!("Tuple Vector: {:#?}", tuple_vector);
+    println!("Tuple Vector: {:?}", tuple_vector);
 }
 
 fn vector_operations() {

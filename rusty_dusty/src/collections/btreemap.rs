@@ -16,7 +16,6 @@ fn btreemap_basics() {
     
     let _value = map.get(&1);
     map.remove(&1);
-    
 
     for (key, value) in &map {
         println!("{}: {}", key, value);
